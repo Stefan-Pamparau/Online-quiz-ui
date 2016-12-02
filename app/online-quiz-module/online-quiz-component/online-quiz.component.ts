@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'online-quiz',
-  template: `<h1>Hello {{name}}</h1>`,
+  templateUrl: 'online-quiz.component.html',
 })
 export class OnlineQuizComponent  { name = 'Online quiz'; }

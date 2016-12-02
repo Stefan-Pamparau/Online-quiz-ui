@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <base href="/"/>
     <title>Online Quiz</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" media="screen,projection">
+    <link type="text/css" rel="stylesheet" href="styles.css">
 
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -14,12 +19,16 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
 
     <script src="systemjs.config.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
   </head>
 
   <body>
-    <online-quiz>Loading AppComponent content here ...</online-quiz>
+      <online-quiz>Loading AppComponent content here ...</online-quiz>
   </body>
 </html>

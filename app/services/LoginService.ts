@@ -16,8 +16,8 @@ export class LoginService {
   }
 
   public login(loginParams: LoginDto): Promise<any> {
-    let loginCredentials = JSON.stringify({LoginDto: loginParams});
-    return this.http.post(this.restEndpointConfig.server + "login", loginCredentials, {headers: this.headers}).toPromise().catch(this.handleError);
+    let loginCredentials = JSON.stringify(loginParams);
+    return this.http.post(this.restEndpointConfig.server + "/login", loginCredentials, {headers: this.headers}).toPromise().catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {

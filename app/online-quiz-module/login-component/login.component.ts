@@ -19,7 +19,7 @@ export class LoginComponent  {
     this.submitted = false;
   }
 
-  oSubmit(): void {
+  onSubmit(): void {
     this.submitted = true;
     this.loginService.login(this.model);
   }

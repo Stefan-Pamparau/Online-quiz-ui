@@ -1,15 +1,13 @@
 import "rxjs/add/operator/toPromise";
 import {Http, Headers} from "@angular/http";
 import {RestEndpointConfig} from "./configuration/RestEndpointConfig";
-import {LoginDto} from "../model/dto/LoginDto";
 import {Injectable} from "@angular/core";
 import {User} from "../model/User";
 
 @Injectable()
-export class LoginService {
+export class RegisterService {
 
   private headers: Headers;
-  private loggedUser: User;
 
   constructor(private http: Http, private restEndpointConfig: RestEndpointConfig) {
     this.headers = new Headers();
@@ -17,13 +15,11 @@ export class LoginService {
     this.headers.append('Accept', 'application/json');
   }
 
-  public login(loginParams: LoginDto): Promise<User> {
-    let loginCredentials = JSON.stringify(loginParams);
-    return this.http.post(this.restEndpointConfig.server + "/login", loginCredentials, {headers: this.headers})
+  public register(user: User): Promise<User> {
+    let userJson = JSON.stringify(user);
+    return this.http.post(this.restEndpointConfig.server + "/register", userJson, {headers: this.headers})
       .toPromise()
-      .then(response => {
-        this.loggedUser = response.json() as User;
-      })
+      .then(response => response.json() as User)
       .catch(this.handleError);
   }
 

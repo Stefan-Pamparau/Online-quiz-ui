@@ -10,6 +10,8 @@ import {FooterComponent} from "./footer-component/footer.component";
 import {LoginComponent} from "./login-component/login.component";
 import {RestEndpointConfig} from "../services/configuration/RestEndpointConfig";
 import {LoginService} from "../services/LoginService";
+import {RegisterService} from "../services/RegisterService";
+import {RegisterComponent} from "./register-component/register.component";
 
 @NgModule({
   imports: [
@@ -23,11 +25,13 @@ import {LoginService} from "../services/LoginService";
     HomePageComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
   ],
   providers: [
     RestEndpointConfig,
-    LoginService
+    LoginService,
+    RegisterService,
   ],
   bootstrap: [OnlineQuizComponent]
 })

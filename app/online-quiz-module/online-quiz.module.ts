@@ -4,7 +4,7 @@ import {OnlineQuizComponent} from "./online-quiz-component/online-quiz.component
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {OnlineQuizRoutingModule} from "../online-quiz-routing-module/online-quiz-routing.module";
-import {HomePageComponent} from "./main-page-component/home-page.component";
+import {HomePageComponent} from "./home-page-component/home-page.component";
 import {NavbarComponent} from "./navbar-component/navbar.component";
 import {FooterComponent} from "./footer-component/footer.component";
 import {LoginComponent} from "./login-component/login.component";

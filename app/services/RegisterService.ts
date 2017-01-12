@@ -2,7 +2,7 @@ import "rxjs/add/operator/toPromise";
 import {Http, Headers} from "@angular/http";
 import {RestEndpointConfig} from "./configuration/RestEndpointConfig";
 import {Injectable} from "@angular/core";
-import {User} from "../model/User";
+import {UserDto} from "../dto/UserDto";
 
 @Injectable()
 export class RegisterService {
@@ -15,11 +15,11 @@ export class RegisterService {
     this.headers.append('Accept', 'application/json');
   }
 
-  public register(user: User): Promise<User> {
+  public register(user: UserDto): Promise<UserDto> {
     let userJson = JSON.stringify(user);
     return this.http.post(this.restEndpointConfig.server + "/register", userJson, {headers: this.headers})
       .toPromise()
-      .then(response => response.json() as User)
+      .then(response => response.json() as UserDto)
       .catch(this.handleError);
   }
 

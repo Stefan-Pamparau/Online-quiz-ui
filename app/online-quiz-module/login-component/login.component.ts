@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {LoginDto} from "../../model/dto/LoginDto";
+import {LoginDto} from "../../dto/LoginDto";
 import {LoginService} from "../../services/LoginService";
 import { Location } from '@angular/common';
 

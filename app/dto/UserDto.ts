@@ -1,10 +1,12 @@
-export class User {
+export class UserDto {
   id: number;
   firstName: string;
   surname: string;
   age: number;
   email: string;
   password: string;
+  token: string;
+  confirmed: boolean;
   userType: string;
 
 

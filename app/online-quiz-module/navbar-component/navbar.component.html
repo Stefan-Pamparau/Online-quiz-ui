@@ -1,9 +1,19 @@
-<nav class="light-green darken-4" role="navigation">
-  <div class="nav-wrapper container">
-    <a class="brand-logo right" href="/">Home</a>
-    <ul class="left hide-on-med-and-down">
+<nav class="light-green darken-4 nav-extended" role="navigation">
+  <div class="nav-wrapper">
+    <a class="brand-logo" href="/">Home</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a routerLink="/" class="material-icons"><i class="material-icons">home</i></a></li>
       <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/register">Register</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a routerLink="/" class="material-icons"><i class="material-icons">home</i></a></li>
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/register">Register</a></li>
+    </ul>
+    <ul class="tabs tabs-transparent">
+      <li><a routerLink="/" class="material-icons"><i class="material-icons">home</i></a></li>
     </ul>
   </div>
 </nav>

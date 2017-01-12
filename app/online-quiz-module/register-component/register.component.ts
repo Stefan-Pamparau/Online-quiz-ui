@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {User} from "../../model/User";
+import {UserDto} from "../../dto/UserDto";
 import {RegisterService} from "../../services/RegisterService";
 import {Location} from "@angular/common";
 
@@ -11,12 +11,12 @@ import {Location} from "@angular/common";
 })
 export class RegisterComponent {
 
-  model: User;
+  model: UserDto;
   submitted: boolean;
   message: string;
 
   constructor(private registerService: RegisterService, private location: Location) {
-    this.model = new User('', '', 0, '', '', '');
+    this.model = new UserDto('', '', 0, '', '', '');
     this.submitted = false;
   }
 

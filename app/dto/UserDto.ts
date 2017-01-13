@@ -1,4 +1,5 @@
 export class UserDto {
+
   id: number;
   firstName: string;
   surname: string;
@@ -8,7 +9,6 @@ export class UserDto {
   token: string;
   confirmed: boolean;
   userType: string;
-
 
   constructor(firstName: string, surname: string, age: number, email: string, password: string, userType: string) {
     this.firstName = firstName;

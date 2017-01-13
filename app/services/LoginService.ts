@@ -9,7 +9,7 @@ import {UserDto} from "../dto/UserDto";
 export class LoginService {
 
   private headers: Headers;
-  private loggedUser: UserDto;
+  loggedUser: UserDto;
 
   constructor(private http: Http, private restEndpointConfig: RestEndpointConfig) {
     this.headers = new Headers();

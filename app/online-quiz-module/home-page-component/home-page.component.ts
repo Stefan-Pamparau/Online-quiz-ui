@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from "@angular/core";
 
 @Component({
   moduleId: module.id,
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: `home-page.component.html`,
   styleUrls: ['home-page.component.css']
 })
-export class HomePageComponent  { name = 'Online quiz'; }
+export class HomePageComponent {
+  name = 'Online quiz';
+}

@@ -12,6 +12,10 @@ import {RestEndpointConfig} from "../services/configuration/RestEndpointConfig";
 import {LoginService} from "../services/LoginService";
 import {RegisterService} from "../services/RegisterService";
 import {RegisterComponent} from "./register-component/register.component";
+import {SelectQuizComponent} from "./select-quiz-component/select-quiz.component";
+import {CreateExamQuizComponent} from "./exam-quiz/create-exam-quiz/create-exam-quiz.component";
+import {CreateGamefiedQuizComponent} from "./gamefied-quiz/create-gamefied-quiz/create-gamefied-quiz.component";
+import {ExamQuizService} from "../services/ExamQuizService";
 
 @NgModule({
   imports: [
@@ -27,8 +31,12 @@ import {RegisterComponent} from "./register-component/register.component";
     FooterComponent,
     LoginComponent,
     RegisterComponent,
+    SelectQuizComponent,
+    CreateExamQuizComponent,
+    CreateGamefiedQuizComponent,
   ],
   providers: [
+    ExamQuizService,
     RestEndpointConfig,
     LoginService,
     RegisterService,

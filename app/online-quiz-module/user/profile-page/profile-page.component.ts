@@ -3,7 +3,7 @@ import {Component, OnInit} from "@angular/core";
 import {ClientService} from "../../../services/ClientService";
 import {Router} from "@angular/router";
 import {LobbyService} from "../../../services/LobbyService";
-import { Location } from '@angular/common';
+import {Location} from "@angular/common";
 
 @Component({
   moduleId: module.id,
@@ -21,10 +21,14 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientService.getClientWithQuizzes().then(response => this.clientWithQuizzesDto = response).catch(error => this.errorMessage = 'An error occurred while retrieving client information')
+    this.clientService.getClientWithQuizzes()
+      .then(response => this.clientWithQuizzesDto = response)
+      .catch(error => this.errorMessage = 'An error occurred while retrieving client information')
   }
 
   createLobby(quizId: number): void {
-    this.lobbyService.createSessionLobby(quizId).catch(error => this.errorMessage = 'Failed to create quiz lobby');
+    this.lobbyService.createSessionLobby(quizId)
+      .then(response => this.router.navigate(['/startLobbyCountdown', quizId]))
+      .catch(error => this.errorMessage = 'Failed to create quiz lobby');
   }
 }

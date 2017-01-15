@@ -4,6 +4,7 @@ import {ExamQuizDto} from "../dto/ExamQuizDto";
 import {LoginService} from "./LoginService";
 import {Injectable} from "@angular/core";
 import {SimpleQuestionAndAnswerDto} from "../dto/composed/SimpleQuestionAndAnswerDto";
+import {ExamQuizWithQuestionsDto} from "../dto/composed/ExamQuizWithQuestionsDto";
 
 @Injectable()
 export class ExamQuizService {
@@ -37,6 +38,14 @@ export class ExamQuizService {
     let questionAndAnswerDto = JSON.stringify(simpleQuestionAndAnswerDto);
     return this.http.post(this.restEndpointConfig.server + "/examQuiz/finishExamQuizCreation", questionAndAnswerDto, {headers: this.headers})
       .toPromise()
+      .catch(this.handleError);
+  }
+
+  public getExamQuizWithQuestions(quizId: number): Promise<ExamQuizWithQuestionsDto> {
+    this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
+    return this.http.get(this.restEndpointConfig.server + "/examQuiz/get/withQuestions/" + quizId, {headers: this.headers})
+      .toPromise()
+      .then(response => response.json() as ExamQuizWithQuestionsDto)
       .catch(this.handleError);
   }
 

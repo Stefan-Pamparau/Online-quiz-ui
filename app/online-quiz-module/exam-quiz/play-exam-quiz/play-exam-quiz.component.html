@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="card-panel">
+    <p class="flow-text">{{ currentQuestion }}</p>
+    <form class="col s12" method="post" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" name="email" type="text" class="validate" required [(ngModel)]="answer">
+          <label for="email">Answer</label>
+        </div>
+      </div>
+      <div *ngIf="message" class="row">
+        <div class="col s12">
+          <p class="red-text">{{ message }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 center-align">
+          <button class="btn waves-effect waves-light light-green darken-2 center-align" type="submit" name="action">
+            Send answer
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

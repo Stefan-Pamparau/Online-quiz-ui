@@ -2,6 +2,7 @@ import {Headers, Http} from "@angular/http";
 import {RestEndpointConfig} from "./configuration/RestEndpointConfig";
 import {LoginService} from "./LoginService";
 import {Injectable} from "@angular/core";
+import {LobbyDto} from "../dto/LobbyDto";
 
 @Injectable()
 export class LobbyService {
@@ -16,7 +17,31 @@ export class LobbyService {
 
   public createSessionLobby(quizId: number): Promise<any> {
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
-    return this.http.get(this.restEndpointConfig.server + "/lobby/createSessionLobby/" + quizId, {headers: this.headers})
+    return this.http.get(this.restEndpointConfig.server + "/lobby/startSessionLobby/" + quizId, {headers: this.headers})
+      .toPromise()
+      .catch(this.handleError);
+  }
+
+  public getSessionLobby(): Promise<LobbyDto> {
+    this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
+    return this.http.get(this.restEndpointConfig.server + "/lobby/getSessionLobby", {headers: this.headers})
+      .toPromise()
+      .then(result => result.json() as LobbyDto)
+      .catch(this.handleError);
+  }
+
+  public updateSessionLobby(lobbyDto: LobbyDto): Promise<LobbyDto> {
+    this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
+    let lobbyDtoJson = JSON.stringify(lobbyDto);
+    return this.http.post(this.restEndpointConfig.server + "/lobby/updateSessionLobby", lobbyDtoJson, {headers: this.headers})
+      .toPromise()
+      .then(result => result.json() as LobbyDto)
+      .catch(this.handleError);
+  }
+
+  public finishSessionLobby(): Promise<any> {
+    this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
+    return this.http.get(this.restEndpointConfig.server + "/lobby/finishSessionLobby", {headers: this.headers})
       .toPromise()
       .catch(this.handleError);
   }

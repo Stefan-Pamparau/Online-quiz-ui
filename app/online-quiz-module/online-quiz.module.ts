@@ -26,6 +26,7 @@ import {SimpleAnswerService} from "../services/SimpleAnswerService";
 import {ChartsModule} from "ng2-charts/ng2-charts";
 import {ClientReportComponent} from "./client-report/client-report.component";
 import {ClientReportService} from "../services/ClientReportService";
+import {NobodyLoggedInErrorComponent} from "./error/nobody-logged-in-error/nobody-logged-in-error.component";
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import {ClientReportService} from "../services/ClientReportService";
     LobbyCountdownComponent,
     PlayExamQuizComponent,
     ClientReportComponent,
+    NobodyLoggedInErrorComponent,
   ],
   providers: [
     ExamQuizService,

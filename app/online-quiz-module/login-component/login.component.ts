@@ -13,7 +13,7 @@ export class LoginComponent {
 
   model: LoginDto;
   submitted: boolean;
-  message: string;
+  errorMessage: string;
 
   constructor(private loginService: LoginService, private location: Location) {
     this.model = new LoginDto('', '');
@@ -22,6 +22,6 @@ export class LoginComponent {
 
   onSubmit(): void {
     this.submitted = true;
-    this.loginService.login(this.model).then(response => this.location.back()).catch(error => this.message = 'Login failed');
+    this.loginService.login(this.model).then(response => this.location.back()).catch(error => this.errorMessage = 'Login failed');
   }
 }

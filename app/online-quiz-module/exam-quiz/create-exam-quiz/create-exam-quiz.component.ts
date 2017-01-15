@@ -49,7 +49,7 @@ export class CreateExamQuizComponent implements OnInit {
       this.successMessage = null;
       this.errorMessage = 'Exam quiz creation failed';
     });
-    this.router.navigate(['/']);
+    this.router.navigate(['/profilePage']);
   }
 
   initializeModel() {

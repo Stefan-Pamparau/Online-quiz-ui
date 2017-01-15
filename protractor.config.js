@@ -155,7 +155,7 @@ function Reporter(options) {
         if (spec.failedExpectations) {
           pad+=indent;
           spec.failedExpectations.forEach(function (fe) {
-            results.push(pad + 'message: ' + fe.message);
+            results.push(pad + 'errorMessage: ' + fe.message);
           });
           pad=pad.substr(2);
         }

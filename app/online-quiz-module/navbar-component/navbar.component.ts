@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {LoginService} from "../../services/LoginService";
+import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   isUserLogged: boolean;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private router: Router) {
 
   }
 
@@ -20,5 +21,6 @@ export class NavbarComponent implements OnInit {
 
   logOut(): void {
     this.loginService.loggedUser = null;
+    this.router.navigate(['/']);
   }
 }

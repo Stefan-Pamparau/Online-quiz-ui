@@ -10,6 +10,7 @@ import {ProfilePageComponent} from "../online-quiz-module/user/profile-page/prof
 import {LobbyCountdownComponent} from "../online-quiz-module/lobby/lobby-countdown/lobby-countdown.component";
 import {PlayExamQuizComponent} from "../online-quiz-module/exam-quiz/play-exam-quiz/play-exam-quiz.component";
 import {ClientReportComponent} from "../online-quiz-module/client-report/client-report.component";
+import {NobodyLoggedInErrorComponent} from "../online-quiz-module/error/nobody-logged-in-error/nobody-logged-in-error.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/homePage', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'startLobbyCountdown/:quizId', component: LobbyCountdownComponent},
   {path: 'playExamQuiz/:quizId', component: PlayExamQuizComponent},
   {path: 'clientReport', component: ClientReportComponent},
+  {path: 'error/nobodyLoggedIn', component: NobodyLoggedInErrorComponent},
 ];
 
 @NgModule({

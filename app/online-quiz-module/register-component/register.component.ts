@@ -13,7 +13,7 @@ export class RegisterComponent {
 
   model: UserDto;
   submitted: boolean;
-  message: string;
+  errorMessage: string;
 
   constructor(private registerService: RegisterService, private location: Location) {
     this.model = new UserDto('', '', 0, '', '', '');
@@ -23,6 +23,6 @@ export class RegisterComponent {
   onSubmit(): void {
     this.submitted = true;
     this.model.userType = 'CLIENT';
-    this.registerService.register(this.model).then(response => this.location.back()).catch(error => this.message = "Registration failed")
+    this.registerService.register(this.model).then(response => this.location.back()).catch(error => this.errorMessage = "Registration failed")
   }
 }

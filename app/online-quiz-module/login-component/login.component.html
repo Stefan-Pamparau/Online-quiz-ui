@@ -13,9 +13,9 @@
           <label for="password">Password</label>
         </div>
       </div>
-      <div *ngIf="message" class="row">
+      <div *ngIf="errorMessage" class="row">
         <div class="col s12">
-          <p class="red-text">{{ message }}</p>
+          <p class="red-text">{{ errorMessage }}</p>
         </div>
       </div>
       <div class="row">

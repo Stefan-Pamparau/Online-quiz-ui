@@ -21,6 +21,7 @@ export class PlayExamQuizComponent implements OnInit {
   currentQuestionIndex: number;
   currentQuestion: string;
   answer: string;
+  successMessage: string;
   errorMessage: string;
 
   constructor(private examQuizService: ExamQuizService, private simpleAnswerService: SimpleAnswerService, private lobbyService: LobbyService, private location: Location, private router: Router, private route: ActivatedRoute) {
@@ -44,6 +45,7 @@ export class PlayExamQuizComponent implements OnInit {
       .then(response => {
         this.answer = '';
         this.currentQuestionIndex++;
+        this.successMessage = 'Answer sent successfully';
         if (this.currentQuestionIndex < this.examQuiz.simpleQuestionDtos.length) {
           this.currentQuestion = this.examQuiz.simpleQuestionDtos[this.currentQuestionIndex].questionText;
         } else {

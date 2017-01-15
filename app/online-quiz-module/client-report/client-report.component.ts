@@ -22,11 +22,10 @@ export class ClientReportComponent implements OnInit {
   public barChartType: string = 'bar';
   public barChartLegend: boolean = true;
 
-  public barChartData:any[] = [
+  public barChartData: any[] = [
     {data: [], label: 'Uninitialized'},
   ];
 
-  // events
   public chartClicked(e: any): void {
     console.log(e);
   }
@@ -45,7 +44,6 @@ export class ClientReportComponent implements OnInit {
         this.barChartData = [
           {data: this.clientReport.quizzesPerMonth, label: this.clientReport.clientDto.email},
         ];
-        let test = 0;
       })
       .catch(error => this.errorMessage = 'Failed to generate client report');
   }

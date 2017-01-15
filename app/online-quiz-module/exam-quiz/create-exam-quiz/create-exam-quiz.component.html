@@ -13,9 +13,14 @@
           <label for="answerText">Answer text</label>
         </div>
       </div>
-      <div *ngIf="message" class="row">
+      <div *ngIf="successMessage" class="row">
         <div class="col s12">
-          <p class="red-text">{{ message }}</p>
+          <p class="green-text">{{ successMessage }}</p>
+        </div>
+      </div>
+      <div *ngIf="errorMessage" class="row">
+        <div class="col s12">
+          <p class="red-text">{{ errorMessage }}</p>
         </div>
       </div>
       <div class="row center-align">

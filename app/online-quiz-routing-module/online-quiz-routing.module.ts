@@ -6,6 +6,7 @@ import {RegisterComponent} from "../online-quiz-module/register-component/regist
 import {CreateExamQuizComponent} from "../online-quiz-module/exam-quiz/create-exam-quiz/create-exam-quiz.component";
 import {CreateGamefiedQuizComponent} from "../online-quiz-module/gamefied-quiz/create-gamefied-quiz/create-gamefied-quiz.component";
 import {SelectQuizComponent} from "../online-quiz-module/select-quiz-component/select-quiz.component";
+import {ProfilePageComponent} from "../online-quiz-module/user/profile-page/profile-page.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/homePage', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'selectQuiz', component: SelectQuizComponent},
   {path: 'examQuiz/create', component: CreateExamQuizComponent},
   {path: 'gamefiedQuiz/create', component: CreateGamefiedQuizComponent},
+  {path: 'profilePage', component: ProfilePageComponent},
 ];
 
 @NgModule({

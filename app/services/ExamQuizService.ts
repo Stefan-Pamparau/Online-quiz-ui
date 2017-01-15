@@ -32,9 +32,10 @@ export class ExamQuizService {
       .catch(this.handleError);
   }
 
-  public finishExamQuizCreation() {
+  public finishExamQuizCreation(simpleQuestionAndAnswerDto: SimpleQuestionAndAnswerDto) {
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
-    return this.http.get(this.restEndpointConfig.server + "/examQuiz/finishExamQuizCreation", {headers: this.headers})
+    let questionAndAnswerDto = JSON.stringify(simpleQuestionAndAnswerDto);
+    return this.http.post(this.restEndpointConfig.server + "/examQuiz/finishExamQuizCreation", questionAndAnswerDto, {headers: this.headers})
       .toPromise()
       .catch(this.handleError);
   }

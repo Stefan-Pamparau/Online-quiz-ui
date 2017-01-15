@@ -16,6 +16,9 @@ import {SelectQuizComponent} from "./select-quiz-component/select-quiz.component
 import {CreateExamQuizComponent} from "./exam-quiz/create-exam-quiz/create-exam-quiz.component";
 import {CreateGamefiedQuizComponent} from "./gamefied-quiz/create-gamefied-quiz/create-gamefied-quiz.component";
 import {ExamQuizService} from "../services/ExamQuizService";
+import {ClientService} from "../services/ClientService";
+import {ProfilePageComponent} from "./user/profile-page/profile-page.component";
+import {LobbyService} from "../services/LobbyService";
 
 @NgModule({
   imports: [
@@ -34,12 +37,15 @@ import {ExamQuizService} from "../services/ExamQuizService";
     SelectQuizComponent,
     CreateExamQuizComponent,
     CreateGamefiedQuizComponent,
+    ProfilePageComponent,
   ],
   providers: [
     ExamQuizService,
     RestEndpointConfig,
     LoginService,
     RegisterService,
+    ClientService,
+    LobbyService,
   ],
   bootstrap: [OnlineQuizComponent]
 })

@@ -1,12 +1,11 @@
-import "rxjs/add/operator/toPromise";
-import {Http, Headers} from "@angular/http";
+import {Headers, Http} from "@angular/http";
 import {RestEndpointConfig} from "./configuration/RestEndpointConfig";
-import {Injectable} from "@angular/core";
-import {ClientSimpleAnswerDto} from "../dto/composed/ClientSimpleAnswerDto";
 import {LoginService} from "./LoginService";
+import {Injectable} from "@angular/core";
+import {ClientReportDto} from "../dto/report/ClientReportDto";
 
 @Injectable()
-export class SimpleAnswerService {
+export class ClientReportService {
 
   private headers: Headers;
 
@@ -16,16 +15,16 @@ export class SimpleAnswerService {
     this.headers.append('Accept', 'application/json');
   }
 
-  public verifyAnswer(clientSimpleAnswerDto: ClientSimpleAnswerDto): Promise<any> {
+  public getClientReport(): Promise<ClientReportDto> {
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
-    let clientSimpleAnswerJson = JSON.stringify(clientSimpleAnswerDto);
-    return this.http.post(this.restEndpointConfig.server + "/simpleAnswer/verifyAnswer", clientSimpleAnswerJson, {headers: this.headers})
+    return this.http.get(this.restEndpointConfig.server + "/reports/clientReport", {headers: this.headers})
       .toPromise()
+      .then(response => response.json() as ClientReportDto)
       .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred while trying to login', error);
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 }

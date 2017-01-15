@@ -1,4 +1,4 @@
-import {SimpleQuestionDto} from "./SimpleQuestionDto";
+import {SimpleQuestionDto} from "../SimpleQuestionDto";
 export class ClientSimpleAnswerDto {
 
   answerText: string;

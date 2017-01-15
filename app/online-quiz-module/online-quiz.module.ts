@@ -23,13 +23,17 @@ import {LobbyCountdownComponent} from "./lobby/lobby-countdown/lobby-countdown.c
 import {PlayExamQuizComponent} from "./exam-quiz/play-exam-quiz/play-exam-quiz.component";
 import {QuizService} from "../services/QuizService";
 import {SimpleAnswerService} from "../services/SimpleAnswerService";
+import {ChartsModule} from "ng2-charts/ng2-charts";
+import {ClientReportComponent} from "./client-report/client-report.component";
+import {ClientReportService} from "../services/ClientReportService";
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    OnlineQuizRoutingModule
+    OnlineQuizRoutingModule,
+    ChartsModule,
   ],
   declarations: [
     OnlineQuizComponent,
@@ -44,6 +48,7 @@ import {SimpleAnswerService} from "../services/SimpleAnswerService";
     ProfilePageComponent,
     LobbyCountdownComponent,
     PlayExamQuizComponent,
+    ClientReportComponent,
   ],
   providers: [
     ExamQuizService,
@@ -54,6 +59,7 @@ import {SimpleAnswerService} from "../services/SimpleAnswerService";
     LobbyService,
     QuizService,
     SimpleAnswerService,
+    ClientReportService,
   ],
   bootstrap: [OnlineQuizComponent]
 })

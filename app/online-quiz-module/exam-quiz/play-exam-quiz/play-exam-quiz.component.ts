@@ -4,8 +4,7 @@ import {Location} from "@angular/common";
 import {Router, ActivatedRoute} from "@angular/router";
 import {ExamQuizWithQuestionsDto} from "../../../dto/composed/ExamQuizWithQuestionsDto";
 import {SimpleAnswerService} from "../../../services/SimpleAnswerService";
-import {SimpleAnswerDto} from "../../../dto/SimpleAnswerDto";
-import {ClientSimpleAnswerDto} from "../../../dto/ClientSimpleAnswerDto";
+import {ClientSimpleAnswerDto} from "../../../dto/composed/ClientSimpleAnswerDto";
 import {LobbyService} from "../../../services/LobbyService";
 
 @Component({

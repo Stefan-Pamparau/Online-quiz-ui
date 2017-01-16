@@ -3,14 +3,13 @@ import {RestEndpointConfig} from "./configuration/RestEndpointConfig";
 import {LoginService} from "./LoginService";
 import {Injectable} from "@angular/core";
 import {QuizDto} from "../dto/QuizDto";
-import {Router} from "@angular/router";
 
 @Injectable()
 export class QuizService {
 
   private headers: Headers;
 
-  constructor(private http: Http, private restEndpointConfig: RestEndpointConfig, private loginService: LoginService, private router: Router) {
+  constructor(private http: Http, private restEndpointConfig: RestEndpointConfig, private loginService: LoginService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Accept', 'application/json');
@@ -18,7 +17,6 @@ export class QuizService {
 
   public getQuizWithId(quizId: number): Promise<QuizDto> {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");

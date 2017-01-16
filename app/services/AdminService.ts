@@ -2,7 +2,6 @@ import {Headers, Http} from "@angular/http";
 import {RestEndpointConfig} from "./configuration/RestEndpointConfig";
 import {LoginService} from "./LoginService";
 import {Injectable} from "@angular/core";
-import {Router} from "@angular/router";
 import {CompleteAdminDto} from "../dto/composed/CompleteAdminDto";
 
 @Injectable()
@@ -10,7 +9,7 @@ export class AdminService {
 
   private headers: Headers;
 
-  constructor(private http: Http, private restEndpointConfig: RestEndpointConfig, private loginService: LoginService, private router: Router) {
+  constructor(private http: Http, private restEndpointConfig: RestEndpointConfig, private loginService: LoginService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Accept', 'application/json');
@@ -18,7 +17,6 @@ export class AdminService {
 
   public getLoggedAdminInformation(): Promise<CompleteAdminDto> {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");

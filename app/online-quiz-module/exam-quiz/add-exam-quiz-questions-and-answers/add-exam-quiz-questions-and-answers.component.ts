@@ -37,11 +37,12 @@ export class AddExamQuizQuestionsAndAnswersComponent {
 
   onSubmit(): void {
     this.submitted = true;
-    this.examQuizService.finishExamQuizCreation(this.model).catch(error => {
-      this.successMessage = null;
-      this.errorMessage = 'Exam quiz creation failed';
-    });
-    this.router.navigate(['/profilePage']);
+    this.examQuizService.finishExamQuizCreation(this.model)
+      .then(response => this.router.navigate(['/profilePage']))
+      .catch(error => {
+        this.successMessage = null;
+        this.errorMessage = 'Exam quiz creation failed';
+      });
   }
 
   initializeModel() {

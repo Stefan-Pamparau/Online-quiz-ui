@@ -4,6 +4,7 @@ import {Location} from "@angular/common";
 import {UsersDto} from "../../../dto/composed/UsersDto";
 import {UserDto} from "../../../dto/UserDto";
 import {UserService} from "../../../services/UserService";
+import {LoginService} from "../../../services/LoginService";
 
 @Component({
   moduleId: module.id,
@@ -18,14 +19,19 @@ export class UserListComponent {
   successMessage: string;
   errorMessage: string;
 
-  constructor(private userService: UserService, private location: Location, private router: Router) {
+  constructor(private userService: UserService, private location: Location, private router: Router, private loginService: LoginService) {
     this.usersDto = new UsersDto(null);
   }
 
   onSubmit(): void {
     this.userService.getUsersByEmailPattern(this.searchBox)
       .then(response => this.usersDto = response)
-      .catch(error => this.errorMessage = 'Failed to retrieve users');
+      .catch(error => {
+        this.errorMessage = 'Failed to retrieve users';
+        if (this.loginService.loggedUser == null) {
+          this.router.navigate(['error/nobodyLoggedIn']);
+        }
+      });
   }
 
   addFriend(friend: UserDto) {

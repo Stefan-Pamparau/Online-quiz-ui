@@ -2,7 +2,6 @@ import {Headers, Http} from "@angular/http";
 import {RestEndpointConfig} from "./configuration/RestEndpointConfig";
 import {LoginService} from "./LoginService";
 import {Injectable} from "@angular/core";
-import {Router} from "@angular/router";
 import {ClientScoreReportDto} from "../dto/report/ClientScoreReportDto";
 import {ClientActivityReportDto} from "../dto/report/ClientActivityReportDto";
 import {UsersScoreReportDto} from "../dto/report/UsersScoreReportDto";
@@ -12,7 +11,7 @@ export class ReportService {
 
   private headers: Headers;
 
-  constructor(private http: Http, private restEndpointConfig: RestEndpointConfig, private loginService: LoginService, private router: Router) {
+  constructor(private http: Http, private restEndpointConfig: RestEndpointConfig, private loginService: LoginService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Accept', 'application/json');
@@ -20,7 +19,6 @@ export class ReportService {
 
   public getClientActivityReport(): Promise<ClientActivityReportDto> {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");
@@ -33,7 +31,6 @@ export class ReportService {
 
   public getClientScoreReport(): Promise<ClientScoreReportDto> {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");
@@ -46,7 +43,6 @@ export class ReportService {
 
   public getUserScoresReport(): Promise<UsersScoreReportDto> {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");

@@ -5,14 +5,13 @@ import {LoginService} from "./LoginService";
 import {Injectable} from "@angular/core";
 import {SimpleQuestionAndAnswerDto} from "../dto/composed/SimpleQuestionAndAnswerDto";
 import {ExamQuizWithQuestionsDto} from "../dto/composed/ExamQuizWithQuestionsDto";
-import {Router} from "@angular/router";
 
 @Injectable()
 export class ExamQuizService {
 
   private headers: Headers;
 
-  constructor(private http: Http, private restEndpointConfig: RestEndpointConfig, private loginService: LoginService, private router: Router) {
+  constructor(private http: Http, private restEndpointConfig: RestEndpointConfig, private loginService: LoginService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Accept', 'application/json');
@@ -20,7 +19,6 @@ export class ExamQuizService {
 
   public startExamQuizCreation(examQuizDto: ExamQuizDto): Promise<ExamQuizDto> {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");
@@ -33,7 +31,6 @@ export class ExamQuizService {
 
   public addSimpleQuestionAndAnswer(simpleQuestionAndAnswerDto: SimpleQuestionAndAnswerDto) {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");
@@ -46,7 +43,6 @@ export class ExamQuizService {
 
   public finishExamQuizCreation(simpleQuestionAndAnswerDto: SimpleQuestionAndAnswerDto) {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");
@@ -59,7 +55,6 @@ export class ExamQuizService {
 
   public getExamQuizWithQuestions(quizId: number): Promise<ExamQuizWithQuestionsDto> {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");

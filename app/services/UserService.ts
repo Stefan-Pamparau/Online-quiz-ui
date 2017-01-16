@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {Headers, Http} from "@angular/http";
 import {RestEndpointConfig} from "./configuration/RestEndpointConfig";
 import {LoginService} from "./LoginService";
-import {Router} from "@angular/router";
 import {UsersDto} from "../dto/composed/UsersDto";
 import {UserDto} from "../dto/UserDto";
 
@@ -11,7 +10,7 @@ export class UserService {
 
   private headers: Headers;
 
-  constructor(private http: Http, private restEndpointConfig: RestEndpointConfig, private loginService: LoginService, private router: Router) {
+  constructor(private http: Http, private restEndpointConfig: RestEndpointConfig, private loginService: LoginService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Accept', 'application/json');
@@ -19,7 +18,6 @@ export class UserService {
 
   public getUsersByEmailPattern(pattern: string): Promise<UsersDto> {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");
@@ -32,7 +30,6 @@ export class UserService {
 
   public addFriend(friend: UserDto): Promise<any> {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");
@@ -45,7 +42,6 @@ export class UserService {
 
   public removeFriend(friend: UserDto): Promise<any> {
     if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
       return Promise.reject(new Error("Nobody is logged in"));
     }
     this.headers.delete("Authorization");

@@ -29,6 +29,8 @@ import {ClientReportService} from "../services/ClientReportService";
 import {NobodyLoggedInErrorComponent} from "./error/nobody-logged-in-error/nobody-logged-in-error.component";
 import {AddExamQuizQuestionsAndAnswersComponent} from "./exam-quiz/add-exam-quiz-questions-and-answers/add-exam-quiz-questions-and-answers.component";
 import {ClientScoreReportComponent} from "./client-report/client-score-report/client-score-report.component";
+import {UserService} from "../services/UserService";
+import {UserListComponent} from "./user/user-list/user-list.component";
 
 @NgModule({
   imports: [
@@ -45,6 +47,7 @@ import {ClientScoreReportComponent} from "./client-report/client-score-report/cl
     FooterComponent,
     LoginComponent,
     RegisterComponent,
+    UserListComponent,
     SelectQuizComponent,
     CreateExamQuizComponent,
     CreateGamefiedQuizComponent,
@@ -66,6 +69,7 @@ import {ClientScoreReportComponent} from "./client-report/client-score-report/cl
     QuizService,
     SimpleAnswerService,
     ClientReportService,
+    UserService,
   ],
   bootstrap: [OnlineQuizComponent]
 })

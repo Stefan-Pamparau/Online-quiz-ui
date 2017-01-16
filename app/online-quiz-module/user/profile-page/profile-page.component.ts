@@ -1,9 +1,10 @@
-import {ClientWithQuizzesDto} from "../../../dto/composed/ClientWithQuizzesDto";
+import {CompleteClientDto} from "../../../dto/composed/CompleteClientDto";
 import {Component, OnInit} from "@angular/core";
 import {ClientService} from "../../../services/ClientService";
 import {Router} from "@angular/router";
-import {LobbyService} from "../../../services/LobbyService";
 import {Location} from "@angular/common";
+import {UserDto} from "../../../dto/UserDto";
+import {UserService} from "../../../services/UserService";
 
 @Component({
   moduleId: module.id,
@@ -13,22 +14,21 @@ import {Location} from "@angular/common";
 })
 export class ProfilePageComponent implements OnInit {
 
-  clientWithQuizzesDto: ClientWithQuizzesDto;
+  completeClientDto: CompleteClientDto;
   errorMessage: string;
 
-  constructor(private clientService: ClientService, private lobbyService: LobbyService, private location: Location, private router: Router) {
+  constructor(private clientService: ClientService, private userService: UserService, private location: Location, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    this.clientService.getClientWithQuizzes()
-      .then(response => this.clientWithQuizzesDto = response)
+    this.clientService.getLoggedClientInformation()
+      .then(response => this.completeClientDto = response)
       .catch(error => this.errorMessage = 'An error occurred while retrieving client information')
   }
 
-  createLobby(quizId: number): void {
-    this.lobbyService.createSessionLobby(quizId)
-      .then(response => this.router.navigate(['/startLobbyCountdown', quizId]))
-      .catch(error => this.errorMessage = 'Failed to create quiz lobby');
+  removeFriend(friend: UserDto): void {
+    this.userService.removeFriend(friend)
+      .catch(error => this.errorMessage = 'An error occurred while retrieving client information')
   }
 }

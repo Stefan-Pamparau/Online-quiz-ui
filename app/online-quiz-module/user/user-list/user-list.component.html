@@ -1,0 +1,53 @@
+<div class="section white">
+  <div class="container">
+    <div class="row">
+      <div class="col s6">
+        <div class="nav-wrapper grey lighten-4">
+          <form (ngSubmit)="onSubmit()">
+            <div class="row valign-wrapper">
+              <div class="input-field col s8">
+                <input id="search_box" type="search" name="search_box" required [(ngModel)]="searchBox">
+                <label for="search_box"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+              <div class="col s4 right-align">
+                <button class="btn waves-effect waves-light light-green darken-2 center-align" type="submit"
+                        name="action">Search<i class="material-icons right">send</i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="successMessage" class="row">
+      <div class="col s12">
+        <p class="green-text">{{ successMessage }}</p>
+      </div>
+    </div>
+    <div *ngIf="errorMessage" class="row">
+      <div class="col s12">
+        <p class="red-text">{{ errorMessage }}</p>
+      </div>
+    </div>
+    <h1 class="header grey-text text-darken-3 lighten-3"><strong>Users</strong></h1>
+    <hr class="section-separator">
+    <div class="section"></div>
+    <div *ngFor="let user of usersDto.userDtos">
+      <div class="row">
+        <div class="col s12 m6">
+          <p class="center-align grey-text text-darken-3 lighten-3">{{ user.firstName }}</p>
+          <p class="center-align grey-text text-darken-3 lighten-3">{{ user.surname }}</p>
+          <p class="center-align grey-text text-darken-3 lighten-3">{{ user.email }}</p>
+        </div>
+        <div class="col s12 m6">
+          <div class="center-align">
+            <a (click)="addFriend(user)" class="btn waves-effect waves-light light-green darken-2 center-align">Add
+              friend</a>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="section"></div>
+    </div>
+  </div>
+</div>

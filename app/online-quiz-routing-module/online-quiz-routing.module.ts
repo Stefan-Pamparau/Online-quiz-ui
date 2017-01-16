@@ -13,6 +13,7 @@ import {ClientActivityReportComponent} from "../online-quiz-module/client-report
 import {NobodyLoggedInErrorComponent} from "../online-quiz-module/error/nobody-logged-in-error/nobody-logged-in-error.component";
 import {AddExamQuizQuestionsAndAnswersComponent} from "../online-quiz-module/exam-quiz/add-exam-quiz-questions-and-answers/add-exam-quiz-questions-and-answers.component";
 import {ClientScoreReportComponent} from "../online-quiz-module/client-report/client-score-report/client-score-report.component";
+import {UserListComponent} from "../online-quiz-module/user/user-list/user-list.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/homePage', pathMatch: 'full'},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'clientActivityReport', component: ClientActivityReportComponent},
   {path: 'clientScoreReport', component: ClientScoreReportComponent},
   {path: 'error/nobodyLoggedIn', component: NobodyLoggedInErrorComponent},
+  {path: 'searchUsers', component: UserListComponent},
 ];
 
 @NgModule({

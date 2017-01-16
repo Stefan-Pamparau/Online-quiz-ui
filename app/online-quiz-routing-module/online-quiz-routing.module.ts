@@ -14,6 +14,7 @@ import {NobodyLoggedInErrorComponent} from "../online-quiz-module/error/nobody-l
 import {AddExamQuizQuestionsAndAnswersComponent} from "../online-quiz-module/exam-quiz/add-exam-quiz-questions-and-answers/add-exam-quiz-questions-and-answers.component";
 import {ClientScoreReportComponent} from "../online-quiz-module/client-report/client-score-report/client-score-report.component";
 import {UserListComponent} from "../online-quiz-module/user/user-list/user-list.component";
+import {UsersScoreReportComponent} from "../online-quiz-module/client-report/users-score-report/users-score-report.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/homePage', pathMatch: 'full'},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'playExamQuiz/:quizId', component: PlayExamQuizComponent},
   {path: 'clientActivityReport', component: ClientActivityReportComponent},
   {path: 'clientScoreReport', component: ClientScoreReportComponent},
+  {path: 'usersScoreReport', component: UsersScoreReportComponent},
   {path: 'error/nobodyLoggedIn', component: NobodyLoggedInErrorComponent},
   {path: 'searchUsers', component: UserListComponent},
 ];

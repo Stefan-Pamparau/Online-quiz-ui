@@ -3,11 +3,10 @@ import {RestEndpointConfig} from "./configuration/RestEndpointConfig";
 import {LoginService} from "./LoginService";
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
-import {ClientScoreReportDto} from "../dto/report/ClientScoreReportDto";
-import {ClientActivityReportDto} from "../dto/report/ClientActivityReportDto";
+import {CompleteAdminDto} from "../dto/composed/CompleteAdminDto";
 
 @Injectable()
-export class ClientReportService {
+export class AdminService {
 
   private headers: Headers;
 
@@ -17,27 +16,16 @@ export class ClientReportService {
     this.headers.append('Accept', 'application/json');
   }
 
-  public getClientActivityReport(): Promise<ClientActivityReportDto> {
+  public getLoggedAdminInformation(): Promise<CompleteAdminDto> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
-      return;
+      return Promise.reject(new Error("Nobody is logged in"));
     }
+    this.headers.delete("Authorization");
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
-    return this.http.get(this.restEndpointConfig.server + "/reports/clientActivityReport", {headers: this.headers})
+    return this.http.get(this.restEndpointConfig.server + "/admin/get/completeAdmin", {headers: this.headers})
       .toPromise()
-      .then(response => response.json() as ClientActivityReportDto)
-      .catch(this.handleError);
-  }
-
-  public getClientScoreReport(): Promise<ClientScoreReportDto> {
-    if (this.loginService.loggedUser == null) {
-      this.router.navigate(['error/nobodyLoggedIn']);
-      return;
-    }
-    this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
-    return this.http.get(this.restEndpointConfig.server + "/reports/clientScoreReport", {headers: this.headers})
-      .toPromise()
-      .then(response => response.json() as ClientScoreReportDto)
+      .then(response => response.json() as CompleteAdminDto)
       .catch(this.handleError);
   }
 

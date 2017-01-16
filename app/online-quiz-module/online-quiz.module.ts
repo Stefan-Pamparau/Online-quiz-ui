@@ -25,12 +25,14 @@ import {QuizService} from "../services/QuizService";
 import {SimpleAnswerService} from "../services/SimpleAnswerService";
 import {ChartsModule} from "ng2-charts/ng2-charts";
 import {ClientActivityReportComponent} from "./client-report/client-activity-report/client-activity-report.component";
-import {ClientReportService} from "../services/ClientReportService";
+import {ReportService} from "../services/ReportService";
 import {NobodyLoggedInErrorComponent} from "./error/nobody-logged-in-error/nobody-logged-in-error.component";
 import {AddExamQuizQuestionsAndAnswersComponent} from "./exam-quiz/add-exam-quiz-questions-and-answers/add-exam-quiz-questions-and-answers.component";
 import {ClientScoreReportComponent} from "./client-report/client-score-report/client-score-report.component";
 import {UserService} from "../services/UserService";
 import {UserListComponent} from "./user/user-list/user-list.component";
+import {UsersScoreReportComponent} from "./client-report/users-score-report/users-score-report.component";
+import {AdminService} from "../services/AdminService";
 
 @NgModule({
   imports: [
@@ -57,6 +59,7 @@ import {UserListComponent} from "./user/user-list/user-list.component";
     PlayExamQuizComponent,
     ClientActivityReportComponent,
     ClientScoreReportComponent,
+    UsersScoreReportComponent,
     NobodyLoggedInErrorComponent,
   ],
   providers: [
@@ -64,12 +67,13 @@ import {UserListComponent} from "./user/user-list/user-list.component";
     RestEndpointConfig,
     LoginService,
     RegisterService,
+    UserService,
+    AdminService,
     ClientService,
     LobbyService,
     QuizService,
     SimpleAnswerService,
-    ClientReportService,
-    UserService,
+    ReportService,
   ],
   bootstrap: [OnlineQuizComponent]
 })

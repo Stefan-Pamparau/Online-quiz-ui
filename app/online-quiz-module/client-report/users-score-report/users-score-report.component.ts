@@ -2,23 +2,23 @@ import {Component, OnInit} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 import {ReportService} from "../../../services/ReportService";
-import {ClientActivityReportDto} from "../../../dto/report/ClientActivityReportDto";
+import {UsersScoreReportDto} from "../../../dto/report/UsersScoreReportDto";
 
 @Component({
   moduleId: module.id,
-  selector: 'client-activity-report',
-  templateUrl: `client-activity-report.component.html`,
-  styleUrls: ['client-activity-report.component.css']
+  selector: 'users-score-report',
+  templateUrl: `users-score-report.component.html`,
+  styleUrls: ['users-score-report.component.css']
 })
-export class ClientActivityReportComponent implements OnInit {
+export class UsersScoreReportComponent implements OnInit {
 
-  clientReport: ClientActivityReportDto;
+  userScoresReport: UsersScoreReportDto;
   errorMessage: string;
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  public barChartLabels: string[] = ['Undefined'];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = true;
 
@@ -38,14 +38,19 @@ export class ClientActivityReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientReportService.getClientActivityReport()
+    this.clientReportService.getUserScoresReport()
       .then(response => {
-        this.clientReport = response;
+        this.userScoresReport = response;
+        let userEmails: string[] = [];
+        for (let userDto of this.userScoresReport.userDtos) {
+          userEmails.push(userDto.email);
+        }
+        this.barChartLabels = userEmails;
         this.barChartData = [
-          {data: this.clientReport.quizzesPerMonth, label: this.clientReport.clientDto.email},
+          {data: this.userScoresReport.scoresPerUser, label: 'Scores'},
         ];
       })
-      .catch(error => this.errorMessage = 'Failed to generate client activity report');
+      .catch(error => this.errorMessage = 'Failed to generate users score report');
   }
 
 }

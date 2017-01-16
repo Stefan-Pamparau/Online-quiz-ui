@@ -19,8 +19,9 @@ export class ClientService {
   public getLoggedClientInformation(): Promise<CompleteClientDto> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
-      return;
+      return Promise.reject(new Error("Nobody is logged in"));
     }
+    this.headers.delete("Authorization");
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     return this.http.get(this.restEndpointConfig.server + "/client/get/completeClient", {headers: this.headers})
       .toPromise()

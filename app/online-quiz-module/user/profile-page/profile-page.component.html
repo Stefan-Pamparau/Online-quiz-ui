@@ -1,60 +1,91 @@
 <div class="container">
   <div class="section"></div>
-  <div *ngIf="completeClientDto" class="row">
-    <div class="col s12 m3">
-      <p class="center-align grey-text text-darken-3 lighten-3">{{ completeClientDto.clientDto.firstName }}</p>
-      <p class="center-align grey-text text-darken-3 lighten-3">{{ completeClientDto.clientDto.surname }}</p>
-      <p class="center-align grey-text text-darken-3 lighten-3">{{ completeClientDto.clientDto.email }}</p>
-      <p class="center-align grey-text text-darken-3 lighten-3">Confirmed: {{ completeClientDto.clientDto.confirmed
-        }}</p>
-      <a class="btn waves-effect waves-light light-green darken-2 center-align" routerLink="/clientActivityReport">Generate activity report</a>
-      <div class="section"></div>
-      <a class="btn waves-effect waves-light light-green darken-2 center-align" routerLink="/clientScoreReport">Generate score report</a>
+  <div *ngIf="completeClientDto">
+    <div class="row">
+      <div class="col s12 m3">
+        <p class="center-align grey-text text-darken-3 lighten-3">{{ completeClientDto.clientDto.firstName }}</p>
+        <p class="center-align grey-text text-darken-3 lighten-3">{{ completeClientDto.clientDto.surname }}</p>
+        <p class="center-align grey-text text-darken-3 lighten-3">{{ completeClientDto.clientDto.email }}</p>
+        <p class="center-align grey-text text-darken-3 lighten-3">Confirmed: {{ completeClientDto.clientDto.confirmed }}</p>
+        <a class="btn waves-effect waves-light light-green darken-2 center-align" routerLink="/clientActivityReport">Generate
+          activity report</a>
+        <div class="section"></div>
+        <a class="btn waves-effect waves-light light-green darken-2 center-align" routerLink="/clientScoreReport">Generate
+          score report</a>
+      </div>
+      <div class="col s12 m9">
+        <h3 class="header grey-text text-darken-3"><strong>Exam Quizzes</strong></h3>
+        <hr class="section-separator">
+        <div class="section"></div>
+        <div *ngIf="errorMessage" class="row">
+          <div class="col s12">
+            <p class="red-text">{{ errorMessage }}</p>
+          </div>
+        </div>
+        <div *ngFor="let quiz of completeClientDto.examQuizDtos" class="row">
+          <div class="col s12 m6">
+            <h3 class="header center-align grey-text text-darken-3 lighten-3">{{ quiz.title }}</h3>
+            <p class="center-align grey-text text-darken-3 lighten-3">{{ quiz.description }}</p>
+          </div>
+          <div class="col s12 m6">
+            <div class="center-align">
+              <a class="btn waves-effect waves-light light-green darken-2 center-align" (click)="createLobby(quiz.id)">Create
+                lobby</a>
+            </div>
+          </div>
+        </div>
+        <div class="section"></div>
+        <div class="section"></div>
+        <h3 class="header grey-text text-darken-3"><strong>Gamefied Quizzes</strong></h3>
+        <hr class="section-separator">
+        <div class="section"></div>
+        <div *ngFor="let quiz of completeClientDto.gamefiedQuizDtos" class="row">
+          <div class="col s12 m6">
+            <h3 class="header center-align grey-text text-darken-3 lighten-3">{{ quiz.title }}</h3>
+            <p class="center-align grey-text text-darken-3 lighten-3">{{ quiz.description }}</p>
+          </div>
+          <div class="col s12 m6">
+            <div class="center-align">
+              <a class="btn waves-effect waves-light light-green darken-2 center-align" (click)="createLobby(quiz.id)">Create
+                lobby</a>
+            </div>
+          </div>
+        </div>
+        <div class="section"></div>
+        <div class="section"></div>
+        <h3 class="header grey-text text-darken-3"><strong>Friends</strong></h3>
+        <hr class="section-separator">
+        <div class="section"></div>
+        <div *ngFor="let friendshipDto of completeClientDto.friendshipDtos" class="row">
+          <div class="col s12 m6">
+            <p class="center-align grey-text text-darken-3 lighten-3">{{ friendshipDto.friend.firstName }}</p>
+            <p class="center-align grey-text text-darken-3 lighten-3">{{ friendshipDto.friend.surname }}</p>
+            <p class="center-align grey-text text-darken-3 lighten-3">{{ friendshipDto.friend.email }}</p>
+          </div>
+          <div class="col s12 m6">
+            <div class="center-align">
+              <a class="btn waves-effect waves-light light-green darken-2 center-align"
+                 (click)="removeFriend(friendshipDto.friend)">Remove friend</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col s12 m9">
-      <h3 class="header grey-text text-darken-3"><strong>Exam Quizzes</strong></h3>
-      <hr class="section-separator">
-      <div class="section"></div>
-      <div *ngIf="errorMessage" class="row">
-        <div class="col s12">
-          <p class="red-text">{{ errorMessage }}</p>
-        </div>
+  </div>
+  <div *ngIf="completeAdminDto">
+    <div class="row">
+      <div class="col s12 m3">
+        <p class="center-align grey-text text-darken-3 lighten-3">{{ completeAdminDto.adminDto.firstName }}</p>
+        <p class="center-align grey-text text-darken-3 lighten-3">{{ completeAdminDto.adminDto.surname }}</p>
+        <p class="center-align grey-text text-darken-3 lighten-3">{{ completeAdminDto.adminDto.email }}</p>
+        <p class="center-align grey-text text-darken-3 lighten-3">Confirmed: {{ completeAdminDto.adminDto.confirmed }}</p>
+        <a class="btn waves-effect waves-light light-green darken-2 center-align" routerLink="/usersScoreReport">Generate users score report</a>
       </div>
-      <div *ngFor="let quiz of completeClientDto.examQuizDtos" class="row">
-        <div class="col s12 m6">
-          <h3 class="header center-align grey-text text-darken-3 lighten-3">{{ quiz.title }}</h3>
-          <p class="center-align grey-text text-darken-3 lighten-3">{{ quiz.description }}</p>
-        </div>
-        <div class="col s12 m6">
-          <div class="center-align">
-            <a class="btn waves-effect waves-light light-green darken-2 center-align" (click)="createLobby(quiz.id)">Create
-              lobby</a>
-          </div>
-        </div>
-      </div>
-      <div class="section"></div>
-      <div class="section"></div>
-      <h3 class="header grey-text text-darken-3"><strong>Gamefied Quizzes</strong></h3>
-      <hr class="section-separator">
-      <div class="section"></div>
-      <div *ngFor="let quiz of completeClientDto.gamefiedQuizDtos" class="row">
-        <div class="col s12 m6">
-          <h3 class="header center-align grey-text text-darken-3 lighten-3">{{ quiz.title }}</h3>
-          <p class="center-align grey-text text-darken-3 lighten-3">{{ quiz.description }}</p>
-        </div>
-        <div class="col s12 m6">
-          <div class="center-align">
-            <a class="btn waves-effect waves-light light-green darken-2 center-align" (click)="createLobby(quiz.id)">Create
-              lobby</a>
-          </div>
-        </div>
-      </div>
-      <div class="section"></div>
       <div class="section"></div>
       <h3 class="header grey-text text-darken-3"><strong>Friends</strong></h3>
       <hr class="section-separator">
       <div class="section"></div>
-      <div *ngFor="let friendshipDto of completeClientDto.friendshipDtos" class="row">
+      <div *ngFor="let friendshipDto of completeAdminDto.friendshipDtos" class="row">
         <div class="col s12 m6">
           <p class="center-align grey-text text-darken-3 lighten-3">{{ friendshipDto.friend.firstName }}</p>
           <p class="center-align grey-text text-darken-3 lighten-3">{{ friendshipDto.friend.surname }}</p>
@@ -62,7 +93,8 @@
         </div>
         <div class="col s12 m6">
           <div class="center-align">
-            <a class="btn waves-effect waves-light light-green darken-2 center-align" (click)="removeFriend(friendshipDto.friend)">Remove friend</a>
+            <a class="btn waves-effect waves-light light-green darken-2 center-align"
+               (click)="removeFriend(friendshipDto.friend)">Remove friend</a>
           </div>
         </div>
       </div>

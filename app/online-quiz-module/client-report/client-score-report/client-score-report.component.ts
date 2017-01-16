@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
-import {ClientReportService} from "../../../services/ClientReportService";
+import {ReportService} from "../../../services/ReportService";
 import {ClientScoreReportDto} from "../../../dto/report/ClientScoreReportDto";
 
 @Component({
@@ -34,7 +34,7 @@ export class ClientScoreReportComponent implements OnInit {
     console.log(e);
   }
 
-  constructor(private clientReportService: ClientReportService, private location: Location, private router: Router, private route: ActivatedRoute) {
+  constructor(private clientReportService: ReportService, private location: Location, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {

@@ -20,8 +20,9 @@ export class SimpleAnswerService {
   public verifyAnswer(clientSimpleAnswerDto: ClientSimpleAnswerDto): Promise<any> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
-      return;
+      return Promise.reject(new Error("Nobody is logged in"));
     }
+    this.headers.delete("Authorization");
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     let clientSimpleAnswerJson = JSON.stringify(clientSimpleAnswerDto);
     return this.http.post(this.restEndpointConfig.server + "/simpleAnswer/verifyAnswer", clientSimpleAnswerJson, {headers: this.headers})

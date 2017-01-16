@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card-panel">
     <p class="flow-text">{{ currentQuestion }}</p>
-    <form class="col s12" method="post" (ngSubmit)="onSubmit()">
+    <form class="col s12" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="input-field col s12">
           <input id="email" name="email" type="text" class="validate" required [(ngModel)]="answer">

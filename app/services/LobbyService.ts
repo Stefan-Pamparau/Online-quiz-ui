@@ -19,6 +19,7 @@ export class LobbyService {
   public createSessionLobby(quizId: number): Promise<any> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
+      return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     return this.http.get(this.restEndpointConfig.server + "/lobby/startSessionLobby/" + quizId, {headers: this.headers})
@@ -29,6 +30,7 @@ export class LobbyService {
   public getSessionLobby(): Promise<LobbyDto> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
+      return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     return this.http.get(this.restEndpointConfig.server + "/lobby/getSessionLobby", {headers: this.headers})
@@ -40,6 +42,7 @@ export class LobbyService {
   public updateSessionLobby(lobbyDto: LobbyDto): Promise<LobbyDto> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
+      return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     let lobbyDtoJson = JSON.stringify(lobbyDto);
@@ -52,6 +55,7 @@ export class LobbyService {
   public finishSessionLobby(): Promise<any> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
+      return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     return this.http.get(this.restEndpointConfig.server + "/lobby/finishSessionLobby", {headers: this.headers})

@@ -2,8 +2,12 @@ export class QuizDto {
 
   id: number;
   quizType: string;
+  title: string;
+  description: string;
 
-  constructor(quizType: string) {
-    this.quizType = quizType;
+  constructor(id: number, title: string, description: string) {
+    this.id = id;
+    this.title = title;
+    this.description = description;
   }
 }

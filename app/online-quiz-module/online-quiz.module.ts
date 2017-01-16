@@ -27,6 +27,7 @@ import {ChartsModule} from "ng2-charts/ng2-charts";
 import {ClientReportComponent} from "./client-report/client-report.component";
 import {ClientReportService} from "../services/ClientReportService";
 import {NobodyLoggedInErrorComponent} from "./error/nobody-logged-in-error/nobody-logged-in-error.component";
+import {AddExamQuizQuestionsAndAnswersComponent} from "./exam-quiz/add-exam-quiz-questions-and-answers/add-exam-quiz-questions-and-answers.component";
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import {NobodyLoggedInErrorComponent} from "./error/nobody-logged-in-error/nobod
     SelectQuizComponent,
     CreateExamQuizComponent,
     CreateGamefiedQuizComponent,
+    AddExamQuizQuestionsAndAnswersComponent,
     ProfilePageComponent,
     LobbyCountdownComponent,
     PlayExamQuizComponent,

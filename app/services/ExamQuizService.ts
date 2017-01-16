@@ -21,6 +21,7 @@ export class ExamQuizService {
   public startExamQuizCreation(examQuizDto: ExamQuizDto): Promise<ExamQuizDto> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
+      return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     let examQuizJson = JSON.stringify(examQuizDto);
@@ -32,6 +33,7 @@ export class ExamQuizService {
   public addSimpleQuestionAndAnswer(simpleQuestionAndAnswerDto: SimpleQuestionAndAnswerDto) {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
+      return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     let questionAndAnswerDto = JSON.stringify(simpleQuestionAndAnswerDto);
@@ -43,6 +45,7 @@ export class ExamQuizService {
   public finishExamQuizCreation(simpleQuestionAndAnswerDto: SimpleQuestionAndAnswerDto) {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
+      return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     let questionAndAnswerDto = JSON.stringify(simpleQuestionAndAnswerDto);
@@ -54,6 +57,7 @@ export class ExamQuizService {
   public getExamQuizWithQuestions(quizId: number): Promise<ExamQuizWithQuestionsDto> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
+      return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     return this.http.get(this.restEndpointConfig.server + "/examQuiz/get/withQuestions/" + quizId, {headers: this.headers})

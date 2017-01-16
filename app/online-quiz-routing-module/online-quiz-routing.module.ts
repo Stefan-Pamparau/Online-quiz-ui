@@ -11,6 +11,7 @@ import {LobbyCountdownComponent} from "../online-quiz-module/lobby/lobby-countdo
 import {PlayExamQuizComponent} from "../online-quiz-module/exam-quiz/play-exam-quiz/play-exam-quiz.component";
 import {ClientReportComponent} from "../online-quiz-module/client-report/client-report.component";
 import {NobodyLoggedInErrorComponent} from "../online-quiz-module/error/nobody-logged-in-error/nobody-logged-in-error.component";
+import {AddExamQuizQuestionsAndAnswersComponent} from "../online-quiz-module/exam-quiz/add-exam-quiz-questions-and-answers/add-exam-quiz-questions-and-answers.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/homePage', pathMatch: 'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'selectQuiz', component: SelectQuizComponent},
   {path: 'examQuiz/create', component: CreateExamQuizComponent},
+  {path: 'examQuiz/addQuestionsAndAnswers', component: AddExamQuizQuestionsAndAnswersComponent},
   {path: 'gamefiedQuiz/create', component: CreateGamefiedQuizComponent},
   {path: 'profilePage', component: ProfilePageComponent},
   {path: 'startLobbyCountdown/:quizId', component: LobbyCountdownComponent},

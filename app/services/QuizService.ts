@@ -19,6 +19,7 @@ export class QuizService {
   public getQuizWithId(quizId: number): Promise<QuizDto> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
+      return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     return this.http.get(this.restEndpointConfig.server + "/quiz/get/" + quizId, {headers: this.headers})

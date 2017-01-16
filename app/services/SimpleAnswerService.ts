@@ -20,6 +20,7 @@ export class SimpleAnswerService {
   public verifyAnswer(clientSimpleAnswerDto: ClientSimpleAnswerDto): Promise<any> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
+      return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
     let clientSimpleAnswerJson = JSON.stringify(clientSimpleAnswerDto);

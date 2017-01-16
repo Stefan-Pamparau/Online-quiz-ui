@@ -7,3 +7,10 @@ online-quiz {
 main {
   flex: 1 0 auto;
 }
+
+.section-separator {
+  height: 12px;
+  margin-top: 0px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}

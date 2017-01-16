@@ -2,8 +2,9 @@ import {Headers, Http} from "@angular/http";
 import {RestEndpointConfig} from "./configuration/RestEndpointConfig";
 import {LoginService} from "./LoginService";
 import {Injectable} from "@angular/core";
-import {ClientReportDto} from "../dto/report/ClientReportDto";
 import {Router} from "@angular/router";
+import {ClientScoreReportDto} from "../dto/report/ClientScoreReportDto";
+import {ClientActivityReportDto} from "../dto/report/ClientActivityReportDto";
 
 @Injectable()
 export class ClientReportService {
@@ -16,15 +17,27 @@ export class ClientReportService {
     this.headers.append('Accept', 'application/json');
   }
 
-  public getClientReport(): Promise<ClientReportDto> {
+  public getClientActivityReport(): Promise<ClientActivityReportDto> {
     if (this.loginService.loggedUser == null) {
       this.router.navigate(['error/nobodyLoggedIn']);
       return;
     }
     this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
-    return this.http.get(this.restEndpointConfig.server + "/reports/clientReport", {headers: this.headers})
+    return this.http.get(this.restEndpointConfig.server + "/reports/clientActivityReport", {headers: this.headers})
       .toPromise()
-      .then(response => response.json() as ClientReportDto)
+      .then(response => response.json() as ClientActivityReportDto)
+      .catch(this.handleError);
+  }
+
+  public getClientScoreReport(): Promise<ClientScoreReportDto> {
+    if (this.loginService.loggedUser == null) {
+      this.router.navigate(['error/nobodyLoggedIn']);
+      return;
+    }
+    this.headers.append("Authorization", "Basic " + btoa(this.loginService.loggedUser.email + ":" + this.loginService.loggedUser.password));
+    return this.http.get(this.restEndpointConfig.server + "/reports/clientScoreReport", {headers: this.headers})
+      .toPromise()
+      .then(response => response.json() as ClientScoreReportDto)
       .catch(this.handleError);
   }
 

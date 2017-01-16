@@ -1,5 +1,5 @@
 import {ClientDto} from "../ClientDto";
-export class ClientReportDto {
+export class ClientActivityReportDto {
 
   clientDto: ClientDto;
   quizzesPerMonth: number[];

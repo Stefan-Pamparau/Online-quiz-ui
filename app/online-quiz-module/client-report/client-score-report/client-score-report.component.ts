@@ -1,18 +1,18 @@
 import {Component, OnInit} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
-import {ClientReportDto} from "../../dto/report/ClientReportDto";
-import {ClientReportService} from "../../services/ClientReportService";
+import {ClientReportService} from "../../../services/ClientReportService";
+import {ClientScoreReportDto} from "../../../dto/report/ClientScoreReportDto";
 
 @Component({
   moduleId: module.id,
-  selector: 'client-report',
-  templateUrl: `client-report.component.html`,
-  styleUrls: ['client-report.component.css']
+  selector: 'client-score-report',
+  templateUrl: `client-score-report.component.html`,
+  styleUrls: ['client-score-report.component.css']
 })
-export class ClientReportComponent implements OnInit {
+export class ClientScoreReportComponent implements OnInit {
 
-  clientReport: ClientReportDto;
+  clientReport: ClientScoreReportDto;
   errorMessage: string;
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -38,14 +38,14 @@ export class ClientReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientReportService.getClientReport()
+    this.clientReportService.getClientScoreReport()
       .then(response => {
         this.clientReport = response;
         this.barChartData = [
-          {data: this.clientReport.quizzesPerMonth, label: this.clientReport.clientDto.email},
+          {data: this.clientReport.scoresPerMonth, label: this.clientReport.clientDto.email},
         ];
       })
-      .catch(error => this.errorMessage = 'Failed to generate client report');
+      .catch(error => this.errorMessage = 'Failed to generate client score report');
   }
 
 }

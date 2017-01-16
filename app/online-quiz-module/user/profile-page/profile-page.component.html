@@ -1,16 +1,17 @@
 <div class="container">
   <div class="section"></div>
   <div *ngIf="clientWithQuizzesDto" class="row">
-    <div class="col s12 m2">
+    <div class="col s12 m3">
       <p class="center-align grey-text text-darken-3 lighten-3">{{ clientWithQuizzesDto.clientDto.firstName }}</p>
       <p class="center-align grey-text text-darken-3 lighten-3">{{ clientWithQuizzesDto.clientDto.surname }}</p>
       <p class="center-align grey-text text-darken-3 lighten-3">{{ clientWithQuizzesDto.clientDto.email }}</p>
       <p class="center-align grey-text text-darken-3 lighten-3">Confirmed: {{ clientWithQuizzesDto.clientDto.confirmed
         }}</p>
-      <a class="btn waves-effect waves-light light-green darken-2 center-align" routerLink="/clientReport">Generate
-        activity report</a>
+      <a class="btn waves-effect waves-light light-green darken-2 center-align" routerLink="/clientActivityReport">Generate activity report</a>
+      <div class="section"></div>
+      <a class="btn waves-effect waves-light light-green darken-2 center-align" routerLink="/clientScoreReport">Generate score report</a>
     </div>
-    <div class="col s12 m10">
+    <div class="col s12 m9">
       <h3 class="header grey-text text-darken-3"><strong>Exam Quizzes</strong></h3>
       <hr class="section-separator">
       <div class="section"></div>
@@ -32,9 +33,9 @@
         </div>
       </div>
       <div class="section"></div>
+      <div class="section"></div>
       <h3 class="header grey-text text-darken-3"><strong>Gamefied Quizzes</strong></h3>
       <hr class="section-separator">
-      <div class="section"></div>
       <div class="section"></div>
       <div *ngFor="let quiz of clientWithQuizzesDto.gamefiedQuizDtos" class="row">
         <div class="col s12 m6">

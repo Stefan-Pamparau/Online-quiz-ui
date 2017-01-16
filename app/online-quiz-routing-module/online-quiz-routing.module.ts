@@ -9,9 +9,10 @@ import {SelectQuizComponent} from "../online-quiz-module/select-quiz-component/s
 import {ProfilePageComponent} from "../online-quiz-module/user/profile-page/profile-page.component";
 import {LobbyCountdownComponent} from "../online-quiz-module/lobby/lobby-countdown/lobby-countdown.component";
 import {PlayExamQuizComponent} from "../online-quiz-module/exam-quiz/play-exam-quiz/play-exam-quiz.component";
-import {ClientReportComponent} from "../online-quiz-module/client-report/client-report.component";
+import {ClientActivityReportComponent} from "../online-quiz-module/client-report/client-activity-report/client-activity-report.component";
 import {NobodyLoggedInErrorComponent} from "../online-quiz-module/error/nobody-logged-in-error/nobody-logged-in-error.component";
 import {AddExamQuizQuestionsAndAnswersComponent} from "../online-quiz-module/exam-quiz/add-exam-quiz-questions-and-answers/add-exam-quiz-questions-and-answers.component";
+import {ClientScoreReportComponent} from "../online-quiz-module/client-report/client-score-report/client-score-report.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/homePage', pathMatch: 'full'},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'profilePage', component: ProfilePageComponent},
   {path: 'startLobbyCountdown/:quizId', component: LobbyCountdownComponent},
   {path: 'playExamQuiz/:quizId', component: PlayExamQuizComponent},
-  {path: 'clientReport', component: ClientReportComponent},
+  {path: 'clientActivityReport', component: ClientActivityReportComponent},
+  {path: 'clientScoreReport', component: ClientScoreReportComponent},
   {path: 'error/nobodyLoggedIn', component: NobodyLoggedInErrorComponent},
 ];
 

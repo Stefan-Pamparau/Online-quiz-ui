@@ -24,10 +24,11 @@ import {PlayExamQuizComponent} from "./exam-quiz/play-exam-quiz/play-exam-quiz.c
 import {QuizService} from "../services/QuizService";
 import {SimpleAnswerService} from "../services/SimpleAnswerService";
 import {ChartsModule} from "ng2-charts/ng2-charts";
-import {ClientReportComponent} from "./client-report/client-report.component";
+import {ClientActivityReportComponent} from "./client-report/client-activity-report/client-activity-report.component";
 import {ClientReportService} from "../services/ClientReportService";
 import {NobodyLoggedInErrorComponent} from "./error/nobody-logged-in-error/nobody-logged-in-error.component";
 import {AddExamQuizQuestionsAndAnswersComponent} from "./exam-quiz/add-exam-quiz-questions-and-answers/add-exam-quiz-questions-and-answers.component";
+import {ClientScoreReportComponent} from "./client-report/client-score-report/client-score-report.component";
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import {AddExamQuizQuestionsAndAnswersComponent} from "./exam-quiz/add-exam-quiz
     ProfilePageComponent,
     LobbyCountdownComponent,
     PlayExamQuizComponent,
-    ClientReportComponent,
+    ClientActivityReportComponent,
+    ClientScoreReportComponent,
     NobodyLoggedInErrorComponent,
   ],
   providers: [
